@@ -87,7 +87,7 @@ class snake(object):
 					self.turns.pop(p)
 			else:
 				#if the snake crossed the border of the screen then the game would get reset
-				if c.pos[0]<=0 or c.pos[0]>=c.rows-1 or  c.pos[1]>=c.rows-1 or c.pos[1]<=0: 
+				if c.pos[0]<0 or c.pos[0]>c.rows-1 or  c.pos[1]>c.rows-1 or c.pos[1]<0: 
 					show_score()
 					pygame.time.delay(2000)
 					self.reset((1,rows//2))
@@ -132,8 +132,8 @@ def randomSnack(rows,item):
 	'''Method for drawing random snacks'''
 	positions = item.body
 	while True:
-		x=random.randrange(1,rows-1)
-		y=random.randrange(1,rows-1)
+		x=random.randrange(1,rows)
+		y=random.randrange(1,rows)
 		if len(list(filter(lambda z:z.pos ==(x,y),positions)))>0:
 			continue
 		else:
